@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0"
+         FeatureVersion="1.0"
+         MaturityLevel="Draft"
+         Originator="example.org"
+         Category="plate_reader.device.control"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+           http://www.sila-standard.org
+           https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+
+  <Identifier>PlateReaderDeviceControl</Identifier>
+  <DisplayName>Plate Reader Device Control</DisplayName>
+  <Description>
+    Provides tray, initialization, temperature, and status control methods.
+  </Description>
+
+  <Command>
+    <Identifier>InitializeDevice</Identifier>
+    <DisplayName>Initialize Device</DisplayName>
+    <Description>
+      Initialize communication and hardware subsystems.
+    </Description>
+    <Observable>No</Observable>
+  </Command>
+
+  <Command>
+    <Identifier>OpenTray</Identifier>
+    <DisplayName>Open Tray</DisplayName>
+    <Description>
+      Open the plate tray.
+    </Description>
+    <Observable>No</Observable>
+  </Command>
+
+  <Command>
+    <Identifier>CloseTray</Identifier>
+    <DisplayName>Close Tray</DisplayName>
+    <Description>
+      Close the plate tray.
+    </Description>
+    <Observable>No</Observable>
+  </Command>
+
+  <Command>
+    <Identifier>SetTemperature</Identifier>
+    <DisplayName>Set Temperature</DisplayName>
+    <Description>
+      Set incubation temperature in degrees Celsius.
+    </Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>TemperatureCelsius</Identifier>
+      <DisplayName>Temperature Celsius</DisplayName>
+      <Description>
+        Temperature setpoint in degrees Celsius.
+      </Description>
+      <DataType>
+        <Basic>Real</Basic>
+      </DataType>
+    </Parameter>
+  </Command>
+
+  <Command>
+    <Identifier>GetDeviceStatus</Identifier>
+    <DisplayName>Get Device Status</DisplayName>
+    <Description>
+      Query the current high-level device status.
+    </Description>
+    <Observable>No</Observable>
+  </Command>
+
+  <Property>
+    <Identifier>DeviceStatus</Identifier>
+    <DisplayName>Device Status</DisplayName>
+    <Description>
+      High-level operational state of the plate reader.
+    </Description>
+    <Observable>Yes</Observable>
+    <DataType>
+      <Basic>String</Basic>
+    </DataType>
+  </Property>
+
+</Feature>

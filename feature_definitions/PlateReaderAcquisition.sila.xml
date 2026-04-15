@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0"
+         FeatureVersion="1.0"
+         MaturityLevel="Draft"
+         Originator="example.org"
+         Category="plate_reader.acquisition"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+           http://www.sila-standard.org
+           https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+
+  <Identifier>PlateReaderAcquisition</Identifier>
+  <DisplayName>Plate Reader Acquisition</DisplayName>
+  <Description>
+    Controls read execution and retrieval of plate read results.
+  </Description>
+
+  <Command>
+    <Identifier>StartRead</Identifier>
+    <DisplayName>Start Read</DisplayName>
+    <Description>
+      Start reading a plate using a named read protocol.
+    </Description>
+    <Observable>Yes</Observable>
+    <Parameter>
+      <Identifier>ProtocolName</Identifier>
+      <DisplayName>Protocol Name</DisplayName>
+      <Description>
+        Name of the plate reader protocol to execute.
+      </Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter>
+    <Parameter>
+      <Identifier>PlateId</Identifier>
+      <DisplayName>Plate ID</DisplayName>
+      <Description>
+        Identifier of the loaded plate.
+      </Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter>
+  </Command>
+
+  <Command>
+    <Identifier>WaitForReadState</Identifier>
+    <DisplayName>Wait For Read State</DisplayName>
+    <Description>
+      Block until read state changes or timeout expires.
+    </Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>TimeoutMilliseconds</Identifier>
+      <DisplayName>Timeout Milliseconds</DisplayName>
+      <Description>
+        Maximum wait time in milliseconds.
+      </Description>
+      <DataType>
+        <Basic>Integer</Basic>
+      </DataType>
+    </Parameter>
+  </Command>
+
+  <Command>
+    <Identifier>GetReadResult</Identifier>
+    <DisplayName>Get Read Result</DisplayName>
+    <Description>
+      Retrieve read output data by result identifier.
+    </Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>ResultId</Identifier>
+      <DisplayName>Result ID</DisplayName>
+      <Description>
+        Identifier for a completed read result.
+      </Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter>
+  </Command>
+
+  <Property>
+    <Identifier>ReadState</Identifier>
+    <DisplayName>Read State</DisplayName>
+    <Description>
+      Current state of the active read workflow.
+    </Description>
+    <Observable>Yes</Observable>
+    <DataType>
+      <Basic>String</Basic>
+    </DataType>
+  </Property>
+
+  <Property>
+    <Identifier>LastResultId</Identifier>
+    <DisplayName>Last Result ID</DisplayName>
+    <Description>
+      Most recent completed read result identifier.
+    </Description>
+    <Observable>Yes</Observable>
+    <DataType>
+      <Basic>String</Basic>
+    </DataType>
+  </Property>
+
+</Feature>
